@@ -14,7 +14,7 @@ return [
     'language' => 'zh-CN',
     'modules' => [
         'admin' => [
-            'class' => 'echoxxoo\admin\Module',
+            'class' => 'echoooxx\admin\Module',
 //            'layout' => 'left-menu',
             'layout' => '@app/views/layouts/main.php',
         ]
@@ -81,7 +81,7 @@ return [
         */
     ],
     'as access' => [
-        'class' => 'echoxxoo\admin\components\AccessControl',
+        'class' => 'echoooxx\admin\components\AccessControl',
         'allowActions' => [
             'debug/*',
             'site/*',
