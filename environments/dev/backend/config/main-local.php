@@ -21,27 +21,27 @@ if (!YII_ENV_TEST) {
         'class' => 'yii\gii\Module',
         'generators' => [
             'model' => [
-                'class' => 'izyue\admin\generators\model\Generator',
+                'class' => 'echoxxoo\admin\generators\model\Generator',
                 'templates' => [
-                    'default' => '@izyue/admin/generators/model/default',
+                    'default' => '@echoxxoo/admin/generators/model/default',
                 ]
             ],
             'crud' => [
-                'class' => 'izyue\admin\generators\crud\Generator',
+                'class' => 'echoxxoo\admin\generators\crud\Generator',
                 'templates' => [
-                    'default' => '@izyue/admin/generators/crud/default',
+                    'default' => '@echoxxoo/admin/generators/crud/default',
                 ]
             ],
             'controller' => [
-                'class' => 'izyue\admin\generators\controller\Generator',
+                'class' => 'echoxxoo\admin\generators\controller\Generator',
                 'templates' => [
-                    'default' => '@izyue/admin/generators/controller/default',
+                    'default' => '@echoxxoo/admin/generators/controller/default',
                 ]
             ],
             'form' => [
-                'class' => 'izyue\admin\generators\form\Generator',
+                'class' => 'echoxxoo\admin\generators\form\Generator',
                 'templates' => [
-                    'default' => '@izyue/admin/generators/form/default',
+                    'default' => '@echoxxoo/admin/generators/form/default',
                 ]
             ],
         ],

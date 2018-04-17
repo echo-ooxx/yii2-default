@@ -10,7 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\helpers\Url;
-use izyue\admin\components\MenuHelper;
+use echoxxoo\admin\components\MenuHelper;
 
 AppAsset::register($this);
 
