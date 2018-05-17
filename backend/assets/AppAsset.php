@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
         'statics/js/jquery.sparkline.js',
         'statics/js/slidebars.min.js',
         'statics/js/common-scripts.js',
+        'statics/js/function.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

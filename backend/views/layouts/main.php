@@ -86,8 +86,7 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
     if (isset($menuArray) && is_array($menuArray)) {
 
         $url = is_array($menuArray['url']) ? $menuArray['url'][0] : $menuArray['url'];
-
-        if (empty($isSubUrl)) {
+        if (empty($isSubUrl) && $isSubUrl) {
             $isSubMenu = isSubMenu($menuArray, $controllerName);
         } else {
             $route = Yii::$app->controller->getRoute();
@@ -105,7 +104,8 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
             echo '<li class="'.$class.'">';
         }
         $url = $url == '#' ? 'javascript:;' : Url::toRoute($url);
-        echo '<a href="'.$url.'"  class="'.$class.'">'.($isShowIcon ? '<i class="fa fa-sitemap"></i>' : '').'<span>'.$menuArray['label'].'</span></a>';
+        //为子目录高亮改动nav
+        echo '<a href="'.$url.'"  class="'.$class.'" nav="'.trim($url,'/').'">'.($isShowIcon ? '<i class="fa fa-sitemap"></i>' : '').'<span>'.$menuArray['label'].'</span></a>';
 
         if (isset($menuArray['items'])) {
             echo '<ul class="sub">';
@@ -142,11 +142,11 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="<?=Url::home()?>" class="logo">IZ<span>YUE</span></a>
+        <a href="<?=Url::home()?>" class="logo">GOOOB</a>
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
-            <ul class="nav top-menu">
+            <ul class="nav top-menu" style="display:none;">
                 <!-- settings start -->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -244,11 +244,11 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
                         <li>
                             <a href="#">
                                 <span class="photo"><img alt="avatar" src="<?=Yii::getAlias('@web')?>/statics/img/avatar-mini.jpg"></span>
-                                    <span class="subject">
+                                <span class="subject">
                                     <span class="from">Jonathan Smith</span>
                                     <span class="time">Just now</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Hello, this is an example msg.
                                     </span>
                             </a>
@@ -256,11 +256,11 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
                         <li>
                             <a href="#">
                                 <span class="photo"><img alt="avatar" src="<?=Yii::getAlias('@web')?>/statics/img/avatar-mini2.jpg"></span>
-                                    <span class="subject">
+                                <span class="subject">
                                     <span class="from">Jhon Doe</span>
                                     <span class="time">10 mins</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                      Hi, Jhon Doe Bhai how are you ?
                                     </span>
                             </a>
@@ -268,11 +268,11 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
                         <li>
                             <a href="#">
                                 <span class="photo"><img alt="avatar" src="<?=Yii::getAlias('@web')?>/statics/img/avatar-mini3.jpg"></span>
-                                    <span class="subject">
+                                <span class="subject">
                                     <span class="from">Jason Stathum</span>
                                     <span class="time">3 hrs</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         This is awesome dashboard.
                                     </span>
                             </a>
@@ -280,11 +280,11 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
                         <li>
                             <a href="#">
                                 <span class="photo"><img alt="avatar" src="<?=Yii::getAlias('@web')?>/statics/img/avatar-mini4.jpg"></span>
-                                    <span class="subject">
+                                <span class="subject">
                                     <span class="from">Jondi Rose</span>
                                     <span class="time">Just now</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Hello, this is metrolab
                                     </span>
                             </a>
@@ -354,7 +354,7 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
         <div class="top-nav ">
             <!--search & user info start-->
             <ul class="nav pull-right top-menu">
-                <li>
+                <li style="display:none;">
                     <input type="text" class="form-control search" placeholder="Search">
                 </li>
                 <!-- user login dropdown start-->
@@ -366,13 +366,13 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <div class="log-arrow-up"></div>
-                        <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                        <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
-                        <li><a href="<?=Url::toRoute('/site/logout')?>" data-method="post"><i class="fa fa-key"></i> Log Out</a></li>
+                        <li style="width:100%;"><a href="<?= Yii::$app->params['homeUrl']?>"><i class=" fa fa-coffee"></i>网站前台</a></li>
+                        <!--                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>-->
+                        <!--                        <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>-->
+                        <li><a href="<?=Url::toRoute('/site/logout')?>" data-method="post"><i class="fa fa-key"></i> 退出</a></li>
                     </ul>
                 </li>
-                <li class="sb-toggle-right">
+                <li class="sb-toggle-right" style="display:none;">
                     <i class="fa  fa-align-right"></i>
                 </li>
                 <!-- user login dropdown end -->
@@ -393,24 +393,24 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
                     </a>
                 </li>
                 <?php
-                    if(isset($menuRows)){
+                if(isset($menuRows)){
 
-                        $isSubUrl = false;
-                        foreach($menuRows as $menuRow){
+                    $isSubUrl = false;
+                    foreach($menuRows as $menuRow){
 
-                            $isSubUrl = isSubUrl($menuRow, $route);
+                        $isSubUrl = isSubUrl($menuRow, $route);
 
-                            if ($isSubUrl) {
-                                break;
-                            }
-
-
+                        if ($isSubUrl) {
+                            break;
                         }
-                        foreach($menuRows as $menuRow){
 
-                            initMenu($menuRow, $controllerName, $isSubUrl, true);
-                        }
+
                     }
+                    foreach($menuRows as $menuRow){
+
+                        initMenu($menuRow, $controllerName, $isSubUrl, true);
+                    }
+                }
                 ?>
 
             </ul>
@@ -572,7 +572,7 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon=false)
     <!--footer start-->
     <footer class="site-footer">
         <div class="text-center">
-            2013 &copy; FlatLab by VectorLab.
+            <?= date('Y')?> &copy; Created by Gooob.
             <a href="#" class="go-top">
                 <i class="fa fa-angle-up"></i>
             </a>
