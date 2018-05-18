@@ -71,14 +71,12 @@ return [
                 ],
             ],
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'as access' => [
         'class' => 'echoooxx\admin\components\AccessControl',

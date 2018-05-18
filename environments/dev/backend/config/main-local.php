@@ -19,32 +19,6 @@ if (!YII_ENV_TEST) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'generators' => [
-            'model' => [
-                'class' => 'echoooxx\admin\generators\model\Generator',
-                'templates' => [
-                    'default' => '@echoooxx/admin/generators/model/default',
-                ]
-            ],
-            'crud' => [
-                'class' => 'echoooxx\admin\generators\crud\Generator',
-                'templates' => [
-                    'default' => '@echoooxx/admin/generators/crud/default',
-                ]
-            ],
-            'controller' => [
-                'class' => 'echoooxx\admin\generators\controller\Generator',
-                'templates' => [
-                    'default' => '@echoooxx/admin/generators/controller/default',
-                ]
-            ],
-            'form' => [
-                'class' => 'echoooxx\admin\generators\form\Generator',
-                'templates' => [
-                    'default' => '@echoooxx/admin/generators/form/default',
-                ]
-            ],
-        ],
     ];
 }
 
