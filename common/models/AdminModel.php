@@ -15,6 +15,7 @@ use yii\web\IdentityInterface;
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
+ * @property string $mobile
  * @property string $auth_key
  * @property integer $status
  * @property integer $created_at
@@ -47,6 +48,8 @@ class AdminModel extends BaseModel implements IdentityInterface
             ['username', 'unique', 'targetClass' => '\common\models\AdminModel', 'message' => Yii::t('signup', 'This username has already been taken')],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
+            ['mobile','number'],
+
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
@@ -68,6 +71,7 @@ class AdminModel extends BaseModel implements IdentityInterface
         return [
             'username' => Yii::t('common', 'username'),
             'email' => Yii::t('common', 'email'),
+            'mobile' => Yii::t('common', 'mobile'),
             'password' => Yii::t('common', 'password'),
         ];
     }
@@ -82,9 +86,9 @@ class AdminModel extends BaseModel implements IdentityInterface
         if (!$this->validate()) {
             return null;
         }
-
         $this->username = $this->username;
         $this->email = $this->email;
+        $this->mobile = $this->mobile;
         $this->setPassword($this->password);
         $this->generateAuthKey();
 

@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: liulipeng
- * Date: 16/3/4
- * Time: 下午12:11
+ * User: leezhang
+ * Date: 2017/11/21
+ * Time: 下午12:24
  */
 return [
     'login' => '登录',
@@ -11,4 +11,5 @@ return [
     'email' => '邮箱',
     'verifyCode' => '验证码',
     'password' => '密码',
+    'mobile' => '手机号码'
 ];

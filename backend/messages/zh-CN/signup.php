@@ -2,9 +2,9 @@
 
 /**
  * Created by PhpStorm.
- * User: liulipeng
- * Date: 16/3/9
- * Time: 下午12:14
+ * User: leezhang
+ * Date: 2017/11/21
+ * Time: 下午12:24
  */
 return [
     'This username has already been taken' => '这个用户名已经被使用了。',
