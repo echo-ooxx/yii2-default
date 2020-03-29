@@ -9,19 +9,25 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.6",
-        "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*",
-        "echo-ooxx/yii2-admin": "*",
+        "php": ">=7.1.0",
+        "yidas/yii2-bower-asset": "~2.0.5",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-httpclient": "^2.0",
+        "yiisoft/yii2-redis": "^2.0",
         "yiidoc/yii2-redactor": "*",
-        "yiisoft/yii2-imagine": "*"
+        "yiisoft/yii2-imagine": "*",
+        "damirka/yii2-jwt": "dev-master",
+        "echo-ooxx/yii2-admin": "*"
     },
     "require-dev": {
-        "codeception/codeception": "*",
-        "yiisoft/yii2-debug": "*",
-        "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1",
+        "codeception/specify": "~0.4.3"
     },
     "config": {
         "process-timeout": 1800
