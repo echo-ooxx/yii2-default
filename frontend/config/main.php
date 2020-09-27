@@ -7,10 +7,13 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-frontend',
+    'id' => 'forgo-app',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'api' => '\frontend\modules\api\Module'
+    ],
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
@@ -21,21 +24,34 @@ return [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning','info'],
+                    'logFile' => '@frontend/logs/app.log',
+                    'logVars' => [],
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning', 'info'],
+                    'categories' => ['yii\db\*'],
+                    'logFile' => '@frontend/logs/db.log',
+                    'logVars' => [],
                 ],
             ],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'suffix' => '',
             'rules' => [
+                '<controller:[\w._-]+>/<id:\d+>' => '<controller>/view',
+                '<controller:[\w._-]+>/<action:[\w._-]+>' => '<controller>/<action>',
+                '<controller:[\w._-]+>/<action:[\w._-]+>/<id:\d+>' => '<controller>/<action>',
+                '<module:[\w._-]+>/<controller:[\w._-]+>/<action:[\w._-]+>' => '<module>/<controller>/<action>',
+                '<module:[\w._-]+>/<controller:[\w._-]+>/<action:[\w._-]+>/<id:\d+>' => '<module>/<controller>/<action>',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

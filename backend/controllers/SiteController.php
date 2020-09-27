@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\dog\Tools;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -19,10 +20,10 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','uploadimage', 'ueditor', 'upload4kv'],
                         'allow' => true,
                     ],
                     [
@@ -33,7 +34,7 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -46,10 +47,28 @@ class SiteController extends Controller
      */
     public function actions()
     {
+
+        $isAddWater = intval(Yii::$app->request->get('isAddWater'));
+        $uploadType = Tools::cleanXSS(Yii::$app->request->get('uploadType'));
+        $uploadType = $uploadType ? $uploadType : 'base64';
+
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
+            /* 单图、多图上传 */
+            'uploadimage' => [
+                'class' => 'common\widgets\images\UploadAction',
+                'uploadTo' => 'qiniu',
+                'uploadType' => $uploadType
+            ],
+            /* ueditor文件上传 */
+            'ueditor' => [
+                'class' => 'backend\actions\UEditorAction',
+                'config' => Yii::$app->params['ueditorConfig'],
+                'isAddWater' => $isAddWater,
+                'uploadTo' => 'qiniu'
+            ]
         ];
     }
 

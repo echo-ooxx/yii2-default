@@ -1,0 +1,58 @@
+.upload_container__upload_box__bt_container__bt{width:250px;height:178px;border:2px dashed #ebebeb;cursor:pointer;text-align:center;position:relative;}
+.upload_container__upload_box__bt_container__bt:hover{border-color:#999;}
+.upload_container__upload_box__bt_container__bt.--no-hover:hover{border-color: #ebebeb;cursor: auto;}
+.upload_container__upload_box__bt_container__bt.--no-hover{
+    font-size: 0;
+    overflow: hidden;
+}
+.upload_container__upload_box__bt_container__bt.--no-hover::before{
+    content: '上传中...';
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.--uploaded .upload_container__upload_box__bt_container__bt.--no-hover::before{
+    display: none;
+}
+.upload_container__upload_box__bt_container__bt.--no-hover img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+.img_upload_bar{
+    width: 0;
+    height: 3px;
+    position: absolute;
+    background-color: #e20c32;
+    left: 0;
+    bottom: 0;
+}
+.upload_container__upload_box__bt_container__bt .__bt_icon{opacity:.5;}
+.upload_container__upload_box__bt_container__bt .__bt_text{font-size:14px;color:#bfbfbf;}
+.upload_container__upload_box__bt_container__bt:hover .__bt_icon{opacity:1;}
+.upload_container__upload_box__bt_container__bt:hover .__bt_text{color:#999;}
+.upload_container__upload_box__bt_container__bt .__pickfiles{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;}
+.__tempadd_bt_container button{
+    background-color:#e20c32;
+    color:#fff;
+    border-radius:999px;
+    font-weight:normal;line-height:28px;font-size:13px;padding:0 30px;margin-top:13px;cursor:pointer;
+}
+
+.common_progress_bar{
+    display: none;
+    width: 0;
+    height: 3px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background-color: #e20c32;
+}
+.common_progress_bar.__show{
+    display: block;
+}
